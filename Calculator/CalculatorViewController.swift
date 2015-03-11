@@ -9,7 +9,7 @@
 import UIKit
 
 // TODO: Rename this to CalculatorViewController
-class ViewController: UIViewController {
+class CalculatorViewController: UIViewController {
 
     // properies (instance variables)
     // IBOutlet is not part of swift. It's an annotation added by XCode.
