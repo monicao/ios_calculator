@@ -34,15 +34,18 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func appendDigit(sender: UIButton) {
         let digit = sender.currentTitle!
-        
-        println("digit = \(digit)")
-        if(userIsTyping == false) {
-          display.text = ""
-        }
-        display.text = display.text! + digit
+        addToDisplay(digit)
         userIsTyping = true
     }
 
+    @IBAction func appendConstant(sender: UIButton) {
+        let constant = sender.currentTitle!
+        switch constant {
+        case "∏": addToDisplay("\(M_PI)")
+        default: break
+        }
+    }
+    
     @IBAction func enter() {
         operandStack.append(displayValue)
         userIsTyping = false
@@ -92,6 +95,16 @@ class CalculatorViewController: UIViewController {
             displayValue = operation(num)
             enter()
         }
+    }
+    
+    // UI Helpers
+    
+    func addToDisplay(char: String) {
+        println("digit = \(char)")
+        if(userIsTyping == false) {
+            display.text = ""
+        }
+        display.text = display.text! + char
     }
     
 }
