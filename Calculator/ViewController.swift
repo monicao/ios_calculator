@@ -67,6 +67,15 @@ class ViewController: UIViewController {
         }
     }
     
+    func performOperation(operation: (Double) -> Double) {
+        userIsTyping = false
+        if operandStack.count >= 1 {
+            let num = operandStack.removeLast()
+            displayValue = operation(num)
+            enter()
+        }
+    }
+    
     @IBAction func operate(sender: UIButton) {
         let operation = sender.currentTitle!
         switch operation {
@@ -76,8 +85,9 @@ class ViewController: UIViewController {
         case "-": performOperation({(num1, num2) in  // using type inference
             return num1 - num2
         })
-        case "✕": performOperation({(num1, num2) in num1 * num2 }) // can omit the return keyword
-        case "%": performOperation {$0 / $1}  // since the operation clojure is the only argument you can move the function outside
+        case "x": performOperation({(num1, num2) in num1 * num2 }) // can omit the return keyword
+        case "÷": performOperation {$0 / $1}  // since the operation clojure is the only argument you can move the function outside
+        case "√": performOperation {sqrt($0)}
         default: break
         }
     }
