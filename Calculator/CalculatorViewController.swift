@@ -61,6 +61,14 @@ class CalculatorViewController: UIViewController {
         }
     }
     
+    @IBAction func addDecimal(sender: UIButton) {
+        if let match = display.text!.rangeOfString("\\.", options: .RegularExpressionSearch) {
+            // already a decimal. do nothing
+        } else {
+            display.text!.append("." as Character)
+        }
+    }
+    
     //
     // Operations
     //
