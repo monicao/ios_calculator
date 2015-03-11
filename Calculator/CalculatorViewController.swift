@@ -57,6 +57,8 @@ class CalculatorViewController: UIViewController {
         case "x": performOperation {(num1, num2) in num1 * num2 }
         case "÷": performOperation {(num1, num2) in num1 / num2}
         case "√": performOperation {(num) in sqrt(num)}
+        case "sin": performOperation {(num) in sin(num)}
+        case "cos": performOperation {(num) in cos(num)}
         default: break
         }
     }
