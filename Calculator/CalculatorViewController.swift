@@ -52,6 +52,11 @@ class CalculatorViewController: UIViewController {
         println("stack = \(operandStack)")
     }
     
+    @IBAction func clear() {
+        operandStack.removeAll()
+        display.text = "0"
+    }
+    
     @IBAction func operate(sender: UIButton) {
         let operation = sender.currentTitle!
         switch operation {
